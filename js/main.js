@@ -4,6 +4,7 @@ import { addToCart } from "./state/cart.js";
 import { initCartBadge } from "./ui/cartBadge.js";
 import { initUserIcon } from "./ui/userIcon.js";
 import { initCartLinkGuard, requireAuth } from "./utils/authGuard.js";
+import { initProductSlider } from "./ui/slider.js";
 
 function bindAddToCart(container, productsById) {
   if (!container) return;
@@ -44,6 +45,9 @@ async function init() {
     const productId = params.get("id");
 
     if (productId) {
+      const sliderHost = document.getElementById("product-slider");
+      if (sliderHost) sliderHost.innerHTML = "";
+
       const product = await getProductById(productId);
       renderProductDetails(product);
 
@@ -54,6 +58,14 @@ async function init() {
     }
 
     const fullProductsData = await getProducts();
+
+    initProductSlider({
+      containerId: "product-slider",
+      products: fullProductsData,
+      take: 6,
+      intervalMs: 3500,
+    });
+
     renderProduct(fullProductsData);
 
     const container = document.getElementById("product-container");
