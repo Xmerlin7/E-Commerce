@@ -5,7 +5,8 @@ fetch("https://fakestoreapi.com/products")
   })
   .then((data) => {
     fullProductData = data;
+    fullProductData
   })
   .catch((error) => {
-    console.error("Error fetching data:", error); // Handle any errors
+    console.error("Error fetching data:", error);
   });
