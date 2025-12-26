@@ -9,10 +9,22 @@
     <script src="../js/main.js" type="module" defer></script>
   </head>
   <body>
-    <a href="./cart.html" aria-label="Cart"
-      >🛒 <span id="cart-count">0</span></a
-    >
-    <span id="user-area"></span>
-    <div id="product-container"></div>
+    <header class="site-header">
+      <nav class="site-nav">
+        <a href="./product.html" aria-label="Products">Products</a>
+        <a href="./cart.html" aria-label="Cart"
+          >🛒 <span id="cart-count">0</span></a
+        >
+        <span id="user-area"></span>
+      </nav>
+    </header>
+
+    <main>
+      <div id="product-container"></div>
+    </main>
+
+    <footer class="site-footer">
+      <small>ES6 E-Commerce</small>
+    </footer>
   </body>
 </html>

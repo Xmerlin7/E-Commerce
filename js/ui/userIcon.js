@@ -1,4 +1,5 @@
 import { getCurrentUser, logout } from "../state/auth.js";
+import { buildLoginUrl } from "../utils/authGuard.js";
 
 function render() {
   const el = document.getElementById("user-area");
@@ -6,7 +7,7 @@ function render() {
 
   const user = getCurrentUser();
   if (!user) {
-    el.innerHTML = `<a href="./auth.html" aria-label="Login">👤 Login</a>`;
+    el.innerHTML = `<a href="${buildLoginUrl()}" aria-label="Login">👤 Login</a>`;
     return;
   }
 

@@ -95,10 +95,7 @@ export function register({ username, email, password, confirm }) {
   users.push(newUser);
   writeJson(USERS_KEY, users);
 
-  // Auto-login after register
-  writeJson(SESSION_KEY, { email: e });
-  window.dispatchEvent(new CustomEvent("auth:changed"));
-
+  // No auto-login: user must login after creating an account
   return { ok: true, user: { username: u, email: e } };
 }
 

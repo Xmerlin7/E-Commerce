@@ -9,76 +9,105 @@
     <script src="../js/authMain.js" type="module" defer></script>
   </head>
   <body>
-    <a href="./product.html">Products</a>
-    <a href="./cart.html" aria-label="Cart"
-      >🛒 <span id="cart-count">0</span></a
-    >
+    <header class="site-header">
+      <nav class="site-nav">
+        <a href="./product.html">Products</a>
+        <a href="./cart.html" aria-label="Cart"
+          >🛒 <span id="cart-count">0</span></a
+        >
+        <span id="user-area"></span>
+      </nav>
+    </header>
 
-    <div class="auth">
-      <h2>Register</h2>
-      <form id="register-form" class="auth-form">
-        <label>
-          Username
-          <input name="username" autocomplete="username" required />
-        </label>
-        <div class="field-error" data-for="register-username"></div>
+    <main>
+      <div class="auth">
+        <section id="register-section">
+          <h2>Create account</h2>
+          
 
-        <label>
-          Email
-          <input name="email" type="email" autocomplete="email" required />
-        </label>
-        <div class="field-error" data-for="register-email"></div>
+          <form id="register-form" class="auth-form">
+            <label>
+              Username
+              <input name="username" autocomplete="username" required />
+            </label>
+            <div class="field-error" data-for="register-username"></div>
 
-        <label>
-          Password
-          <input
-            name="password"
-            type="password"
-            autocomplete="new-password"
-            required
-          />
-        </label>
-        <div class="field-error" data-for="register-password"></div>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <div class="field-error" data-for="register-email"></div>
 
-        <label>
-          Confirm Password
-          <input
-            name="confirm"
-            type="password"
-            autocomplete="new-password"
-            required
-          />
-        </label>
-        <div class="field-error" data-for="register-confirm"></div>
+            <label>
+              Password
+              <input
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                required
+              />
+            </label>
+            <div class="field-error" data-for="register-password"></div>
 
-        <div class="field-error" data-for="register-form"></div>
+            <label>
+              Confirm Password
+              <input
+                name="confirm"
+                type="password"
+                autocomplete="new-password"
+                required
+              />
+            </label>
+            <div class="field-error" data-for="register-confirm"></div>
 
-        <button type="submit">Create account</button>
-      </form>
+            <div class="field-error" data-for="register-form"></div>
 
-      <h2>Login</h2>
-      <form id="login-form" class="auth-form">
-        <label>
-          Email
-          <input name="email" type="email" autocomplete="email" required />
-        </label>
-        <div class="field-error" data-for="login-email"></div>
+            <button type="submit">Create account</button>
+            <p class="auth-switch">
+            Already have an account?
+            <a href="#login" id="go-login">Login</a>
+          </p>
+          </form>
+        </section>
 
-        <label>
-          Password
-          <input
-            name="password"
-            type="password"
-            autocomplete="current-password"
-            required
-          />
-        </label>
-        <div class="field-error" data-for="login-password"></div>
+        <section id="login-section" hidden>
+          <h2>Login</h2>
+          
 
-        <div class="field-error" data-for="login-form"></div>
+          <div class="field-success" id="login-success"></div>
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
+          <form id="login-form" class="auth-form">
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <div class="field-error" data-for="login-email"></div>
+
+            <label>
+              Password
+              <input
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+              />
+            </label>
+            <div class="field-error" data-for="login-password"></div>
+
+            <div class="field-error" data-for="login-form"></div>
+
+            <button type="submit">Login</button>
+            <p class="auth-switch">
+            Don’t have an account?
+            <a href="#register" id="go-register">Create account</a>
+          </p>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <small>ES6 E-Commerce — Auth</small>
+    </footer>
   </body>
 </html>

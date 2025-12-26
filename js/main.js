@@ -3,6 +3,7 @@ import { renderProduct, renderProductDetails } from "./ui/renderProducts.js";
 import { addToCart } from "./state/cart.js";
 import { initCartBadge } from "./ui/cartBadge.js";
 import { initUserIcon } from "./ui/userIcon.js";
+import { initCartLinkGuard, requireAuth } from "./utils/authGuard.js";
 
 function bindAddToCart(container, productsById) {
   if (!container) return;
@@ -18,6 +19,8 @@ function bindAddToCart(container, productsById) {
     const productId = Number(id);
     const product = productsById.get(productId);
     if (!product) return;
+
+    if (!requireAuth()) return;
 
     try {
       addToCart(product, 1);
@@ -35,6 +38,7 @@ async function init() {
   try {
     initCartBadge();
     initUserIcon();
+    initCartLinkGuard();
 
     const params = new URLSearchParams(window.location.search);
     const productId = params.get("id");
