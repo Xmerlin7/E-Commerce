@@ -87,7 +87,6 @@ export function renderCart() {
 			<h2>Cart</h2>
 			<div class="cart-actions">
 				<button id="clear-cart" type="button">Clear cart</button>
-        <button id="checkout" class="checkout-btn" type="button">Checkout</button>
 			</div>
 
 			<div class="cart-items">
@@ -117,6 +116,7 @@ export function renderCart() {
 
 			<div class="cart-summary">
 				<p>Total: ${total.toFixed(2)} $</p>
+        <button id="checkout" class="checkout-btn" type="button">Checkout</button>
 			</div>
 		</div>
 	`;
