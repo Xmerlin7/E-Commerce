@@ -1,0 +1,17 @@
+/* Product cards */
+.product {
+  position: relative;
+}
+
+.product-eye {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  text-decoration: none;
+  user-select: none;
+}
+
+.product:hover .product-eye {
+  opacity: 1;
+}
