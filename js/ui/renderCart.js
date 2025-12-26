@@ -76,7 +76,7 @@ export function renderCart() {
 			<div class="cart">
 				<h2>Cart</h2>
 				<p>Your cart is empty.</p>
-				<a href="./product.html">Go to products</a>
+        <a class="btn-primary" href="./product.html">Go to products</a>
 			</div>
 		`;
     return;
@@ -116,7 +116,7 @@ export function renderCart() {
 
 			<div class="cart-summary">
 				<p>Total: ${total.toFixed(2)} $</p>
-        <button id="checkout" class="checkout-btn" type="button">Checkout</button>
+        <button id="checkout" class="btn-primary checkout-btn" type="button">Checkout</button>
 			</div>
 		</div>
 	`;

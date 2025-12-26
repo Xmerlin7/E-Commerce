@@ -26,7 +26,7 @@ function renderOrder() {
       <div class="order">
         <h2>Order Shipped</h2>
         <p>No recent order found.</p>
-        <a href="./product.html">Go to products</a>
+        <a class="btn-primary" href="./product.html">Go to products</a>
       </div>
     `;
     return;
@@ -66,7 +66,7 @@ function renderOrder() {
         <p><strong>Total:</strong> ${formatMoney(order.total)} $</p>
       </div>
 
-      <a class="order-link" href="./product.html">Continue shopping</a>
+      <a class="btn-primary" href="./product.html">Continue shopping</a>
     </div>
   `;
 
