@@ -17,6 +17,7 @@ function matchesCategory(product, selected) {
   if (selected === "mens") return cat === "men's clothing";
   if (selected === "womens") return cat === "women's clothing";
   if (selected === "electronics") return cat === "electronics";
+  if (selected === "jewelry") return cat === "jewelery" || cat === "jewelry";
 
   return true;
 }
@@ -40,6 +41,7 @@ export function initProductFilters({
           <label class="radio"><input type="radio" name="category" value="mens" /> Clothes (Men)</label>
           <label class="radio"><input type="radio" name="category" value="womens" /> Clothes (Women)</label>
           <label class="radio"><input type="radio" name="category" value="electronics" /> Electronics</label>
+          <label class="radio"><input type="radio" name="category" value="jewelry" /> Jewelry</label>
         </div>
 
         <div class="filter-block" aria-label="Price filter">
