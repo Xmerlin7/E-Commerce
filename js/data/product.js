@@ -1,12 +1,4 @@
-let fullProductData = []
-fetch("https://fakestoreapi.com/products")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    fullProductData = data;
-    fullProductData
-  })
-  .catch((error) => {
-    console.error("Error fetching data:", error);
-  });
+export default async function getProducts() {
+  const response = await fetch("https://fakestoreapi.com/products");
+  return response.json();
+}
