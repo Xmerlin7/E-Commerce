@@ -4,6 +4,7 @@ import {
   incrementCartItemQuantity,
   removeFromCart,
 } from "../state/cart.js";
+import { saveLastOrder } from "../state/order.js";
 
 function calcTotal(cartItems) {
   return cartItems.reduce(
@@ -15,6 +16,57 @@ function calcTotal(cartItems) {
 export function renderCart() {
   const container = document.getElementById("cart-container");
   if (!container) return;
+
+  // Bind once: avoid stacking listeners on every re-render
+  if (container.dataset.bound !== "1") {
+    container.dataset.bound = "1";
+
+    container.addEventListener("click", (e) => {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+
+      const checkoutBtn = target.closest("#checkout");
+      if (checkoutBtn) {
+        const items = getCart();
+        if (items.length === 0) return;
+
+        const total = calcTotal(items);
+        const order = {
+          id: `ORD-${Date.now()}`,
+          createdAt: new Date().toISOString(),
+          items: items.map((x) => ({
+            id: x.id,
+            title: x.title,
+            price: x.price,
+            quantity: x.quantity,
+          })),
+          total,
+        };
+
+        saveLastOrder(order);
+        clearCart();
+        window.location.href = "./order.html";
+        return;
+      }
+
+      const removeBtn = target.closest(".remove-item");
+      if (removeBtn) {
+        const id = removeBtn.getAttribute("data-id");
+        removeFromCart(id);
+        renderCart();
+        return;
+      }
+
+      const qtyBtn = target.closest(".qty-btn");
+      if (qtyBtn) {
+        const id = qtyBtn.getAttribute("data-id");
+        const action = qtyBtn.getAttribute("data-action");
+        if (action === "increase") incrementCartItemQuantity(id, 1);
+        if (action === "decrease") incrementCartItemQuantity(id, -1);
+        renderCart();
+      }
+    });
+  }
 
   const cartItems = getCart();
   const total = calcTotal(cartItems);
@@ -35,6 +87,7 @@ export function renderCart() {
 			<h2>Cart</h2>
 			<div class="cart-actions">
 				<button id="clear-cart" type="button">Clear cart</button>
+        <button id="checkout" class="checkout-btn" type="button">Checkout</button>
 			</div>
 
 			<div class="cart-items">
@@ -75,27 +128,4 @@ export function renderCart() {
       renderCart();
     });
   }
-
-  // Event delegation: one handler for remove and +/-
-  container.addEventListener("click", (e) => {
-    const target = e.target;
-    if (!(target instanceof Element)) return;
-
-    const removeBtn = target.closest(".remove-item");
-    if (removeBtn) {
-      const id = removeBtn.getAttribute("data-id");
-      removeFromCart(id);
-      renderCart();
-      return;
-    }
-
-    const qtyBtn = target.closest(".qty-btn");
-    if (qtyBtn) {
-      const id = qtyBtn.getAttribute("data-id");
-      const action = qtyBtn.getAttribute("data-action");
-      if (action === "increase") incrementCartItemQuantity(id, 1);
-      if (action === "decrease") incrementCartItemQuantity(id, -1);
-      renderCart();
-    }
-  });
 }
