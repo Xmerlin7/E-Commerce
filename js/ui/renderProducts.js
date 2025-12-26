@@ -1,5 +1,5 @@
 export function renderProduct(products) {
-  const container = document.getElementById("product");
+  const container = document.getElementById("product-container");
   if (!container) return;
 
   container.innerHTML = products
