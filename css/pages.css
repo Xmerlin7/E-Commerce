@@ -10,6 +10,21 @@ body > a {
   margin-bottom: 1rem;
 }
 
+#user-area {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+#user-area button {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 #cart-count {
   display: inline-block;
   min-width: 1.5rem;
@@ -17,6 +32,50 @@ body > a {
   border: 1px solid currentColor;
   border-radius: 999px;
   padding: 0 0.4rem;
+}
+
+/* Auth */
+.auth {
+  max-width: 520px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+}
+
+.auth h2 {
+  margin: 0.5rem 0 0.75rem;
+}
+
+.auth-form {
+  display: grid;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.auth-form label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.auth-form input {
+  padding: 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+  background: transparent;
+}
+
+.auth-form button {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.field-error {
+  min-height: 1.1rem;
+  font-size: 0.9rem;
 }
 
 #product-container {

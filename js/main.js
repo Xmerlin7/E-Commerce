@@ -2,6 +2,7 @@ import getProducts, { getProductById } from "./data/product.js";
 import { renderProduct, renderProductDetails } from "./ui/renderProducts.js";
 import { addToCart } from "./state/cart.js";
 import { initCartBadge } from "./ui/cartBadge.js";
+import { initUserIcon } from "./ui/userIcon.js";
 
 function bindAddToCart(container, productsById) {
   if (!container) return;
@@ -33,6 +34,7 @@ function bindAddToCart(container, productsById) {
 async function init() {
   try {
     initCartBadge();
+    initUserIcon();
 
     const params = new URLSearchParams(window.location.search);
     const productId = params.get("id");

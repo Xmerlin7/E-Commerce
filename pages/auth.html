@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+    <script src="../js/authMain.js" type="module" defer></script>
+  </head>
+  <body>
+    <a href="./product.html">Products</a>
+    <a href="./cart.html" aria-label="Cart"
+      >🛒 <span id="cart-count">0</span></a
+    >
+
+    <div class="auth">
+      <h2>Register</h2>
+      <form id="register-form" class="auth-form">
+        <label>
+          Username
+          <input name="username" autocomplete="username" required />
+        </label>
+        <div class="field-error" data-for="register-username"></div>
+
+        <label>
+          Email
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <div class="field-error" data-for="register-email"></div>
+
+        <label>
+          Password
+          <input
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+        </label>
+        <div class="field-error" data-for="register-password"></div>
+
+        <label>
+          Confirm Password
+          <input
+            name="confirm"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+        </label>
+        <div class="field-error" data-for="register-confirm"></div>
+
+        <div class="field-error" data-for="register-form"></div>
+
+        <button type="submit">Create account</button>
+      </form>
+
+      <h2>Login</h2>
+      <form id="login-form" class="auth-form">
+        <label>
+          Email
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <div class="field-error" data-for="login-email"></div>
+
+        <label>
+          Password
+          <input
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+        </label>
+        <div class="field-error" data-for="login-password"></div>
+
+        <div class="field-error" data-for="login-form"></div>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </body>
+</html>
