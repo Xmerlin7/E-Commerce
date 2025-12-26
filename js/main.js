@@ -14,7 +14,17 @@ async function init() {
       const addBtn = document.getElementById("add-to-cart");
       if (addBtn) {
         addBtn.addEventListener("click", () => {
-          addToCart(product, 1);
+          try {
+            const cart = addToCart(product, 1);
+            addBtn.textContent = "Added to cart";
+            addBtn.disabled = true;
+            if (cart) console.log("Cart:", cart);
+
+            // Make the result visible: go to cart page
+            window.location.href = "./cart.html";
+          } catch (err) {
+            console.error("Add to cart failed:", err);
+          }
         });
       }
 
