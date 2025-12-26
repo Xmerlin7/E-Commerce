@@ -5,6 +5,7 @@ import { initCartBadge } from "./ui/cartBadge.js";
 import { initUserIcon } from "./ui/userIcon.js";
 import { initCartLinkGuard, requireAuth } from "./utils/authGuard.js";
 import { initProductSlider } from "./ui/slider.js";
+import { initProductFilters } from "./ui/productFilters.js";
 
 function bindAddToCart(container, productsById) {
   if (!container) return;
@@ -47,6 +48,8 @@ async function init() {
     if (productId) {
       const sliderHost = document.getElementById("product-slider");
       if (sliderHost) sliderHost.innerHTML = "";
+      const filtersHost = document.getElementById("product-filters");
+      if (filtersHost) filtersHost.innerHTML = "";
 
       const product = await getProductById(productId);
       renderProductDetails(product);
@@ -66,7 +69,12 @@ async function init() {
       intervalMs: 3500,
     });
 
-    renderProduct(fullProductsData);
+    // Default: show all products. Filters update instantly.
+    initProductFilters({
+      containerId: "product-filters",
+      products: fullProductsData,
+      onFiltered: (filtered) => renderProduct(filtered),
+    });
 
     const container = document.getElementById("product-container");
     const productsById = new Map(
