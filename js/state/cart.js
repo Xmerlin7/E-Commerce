@@ -12,6 +12,19 @@ function readCart() {
 
 function writeCart(cartItems) {
   localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+
+  // Notify UI (badge, cart page, etc.) that cart changed
+  try {
+    window.dispatchEvent(
+      new CustomEvent("cart:changed", {
+        detail: {
+          items: cartItems,
+        },
+      })
+    );
+  } catch {
+    // ignore (e.g., non-browser environments)
+  }
 }
 
 export function getCart() {

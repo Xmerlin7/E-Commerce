@@ -10,6 +10,15 @@ body > a {
   margin-bottom: 1rem;
 }
 
+#cart-count {
+  display: inline-block;
+  min-width: 1.5rem;
+  text-align: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0 0.4rem;
+}
+
 #product-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
