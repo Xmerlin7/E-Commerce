@@ -79,6 +79,15 @@ body > a {
   cursor: pointer;
 }
 
+.add-to-cart {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 #add-to-cart:disabled {
   cursor: default;
   opacity: 0.7;
@@ -137,6 +146,27 @@ body > a {
 
 .cart-item-info p {
   margin: 0.2rem 0;
+}
+
+.qty-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid currentColor;
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.qty-value {
+  min-width: 1.5rem;
+  text-align: center;
 }
 
 .cart-summary {

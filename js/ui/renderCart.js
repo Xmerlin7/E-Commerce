@@ -1,4 +1,9 @@
-import { clearCart, getCart, removeFromCart } from "../state/cart.js";
+import {
+  clearCart,
+  getCart,
+  incrementCartItemQuantity,
+  removeFromCart,
+} from "../state/cart.js";
 
 function calcTotal(cartItems) {
   return cartItems.reduce(
@@ -42,7 +47,11 @@ export function renderCart() {
 									<h3>Name: ${item.title}</h3>
 									<p>ID: ${item.id}</p>
 									<p>Price: ${item.price} $</p>
-									<p>Qty: ${item.quantity}</p>
+									<div class="qty-controls" aria-label="Quantity controls">
+										<button class="qty-btn" type="button" data-action="decrease" data-id="${item.id}">-</button>
+										<span class="qty-value">${item.quantity}</span>
+										<button class="qty-btn" type="button" data-action="increase" data-id="${item.id}">+</button>
+									</div>
 								</div>
 								<div class="cart-item-actions">
 									<button class="remove-item" type="button" data-id="${item.id}">Remove</button>
@@ -67,11 +76,26 @@ export function renderCart() {
     });
   }
 
-  container.querySelectorAll(".remove-item").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const id = btn.getAttribute("data-id");
+  // Event delegation: one handler for remove and +/-
+  container.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+
+    const removeBtn = target.closest(".remove-item");
+    if (removeBtn) {
+      const id = removeBtn.getAttribute("data-id");
       removeFromCart(id);
       renderCart();
-    });
+      return;
+    }
+
+    const qtyBtn = target.closest(".qty-btn");
+    if (qtyBtn) {
+      const id = qtyBtn.getAttribute("data-id");
+      const action = qtyBtn.getAttribute("data-action");
+      if (action === "increase") incrementCartItemQuantity(id, 1);
+      if (action === "decrease") incrementCartItemQuantity(id, -1);
+      renderCart();
+    }
   });
 }

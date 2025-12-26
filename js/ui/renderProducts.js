@@ -12,6 +12,7 @@ export function renderProduct(products) {
                     <p>ID: ${product.id}</p>
                     <p>Price: ${product.price} $</p>
                     <p>Category: ${product.category}</p>
+                    <button class="add-to-cart" type="button" data-id="${product.id}">Add to cart</button>
                 </div>
             `
     )
@@ -30,7 +31,9 @@ export function renderProductDetails(product) {
       <p>Price: ${product.price} $</p>
       <p>Category: ${product.category}</p>
       <p>${product.description ?? ""}</p>
-      <button id="add-to-cart" type="button">Add to cart</button>
+      <button id="add-to-cart" class="add-to-cart" data-id="${
+        product.id
+      }" type="button">Add to cart</button>
     </div>
   `;
 }
